@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the CKEditorSonataMediaBundle package.
+ * This file is part of the CKEditorSonataMediaBundlefork package.
  *
  * (c) La Coopérative des Tilleuls <contact@les-tilleuls.coop>
  *
@@ -11,10 +11,14 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace CoopTilleuls\Bundle\CKEditorSonataMediaBundle\Controller;
+namespace TWorks\Bundle\CKEditorSonataMediaBundlefork\Controller;
 
-use Sonata\MediaBundle\Controller\MediaAdminController as BaseMediaAdminController;
+use Sonata\AdminBundle\Controller\CRUDController;
+use Sonata\MediaBundle\Provider\Pool;
 use Symfony\Component\Form\FormView;
+use Sonata\ClassificationBundle\Model\CategoryManagerInterface;
+use Sonata\ClassificationBundle\Model\ContextManagerInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
@@ -23,8 +27,23 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
  *
  * @author Kévin Dunglas <kevin@les-tilleuls.coop>
  */
-class MediaAdminController extends BaseMediaAdminController
+class MediaAdminController extends CRUDController
 {
+    protected $requestStack;
+
+    public function __construct(RequestStack $requestStack)
+    {
+        $this->requestStack = $requestStack;
+    }
+
+    public static function getSubscribedServices(): array
+    {
+        return [
+                'sonata.media.pool' => Pool::class,
+                'sonata.media.manager.category' => '?'.CategoryManagerInterface::class,
+                'sonata.media.manager.context' => '?'.ContextManagerInterface::class,
+            ] + parent::getSubscribedServices();
+    }
     /**
      * Gets a template.
      *
@@ -34,7 +53,7 @@ class MediaAdminController extends BaseMediaAdminController
      */
     private function getTemplate($name)
     {
-        $templates = $this->container->getParameter('coop_tilleuls_ck_editor_sonata_media.configuration.templates');
+        $templates = $this->container->getParameter('tworks_ck_editor_sonata_media.configuration.templates');
 
         if (isset($templates[$name])) {
             return $templates[$name];
@@ -63,7 +82,7 @@ class MediaAdminController extends BaseMediaAdminController
         // Store formats
         $formats = [];
         foreach ($datagrid->getResults() as $media) {
-            $formats[$media->getId()] = $this->get('sonata.media.pool')->getFormatNamesByContext($media->getContext());
+            $formats[$media->getId()] = $this->container->get('sonata.media.pool')->getFormatNamesByContext($media->getContext());
         }
 
         $formView = $datagrid->getForm()->createView();
@@ -93,9 +112,9 @@ class MediaAdminController extends BaseMediaAdminController
             throw new AccessDeniedException();
         }
 
-        $mediaManager = $this->get('sonata.media.manager.media');
+        $mediaManager = $this->container->get('sonata.media.manager.media');
 
-        $request = $this->getRequest();
+        $request = $this->requestStack->getCurrentRequest();
         $provider = $request->get('provider');
         $file = $request->files->get('upload');
 
@@ -103,7 +122,7 @@ class MediaAdminController extends BaseMediaAdminController
             throw $this->createNotFoundException();
         }
 
-        $context = $request->get('context', $this->get('sonata.media.pool')->getDefaultContext());
+        $context = $request->get('context', $this->container->get('sonata.media.pool')->getDefaultContext());
 
         $media = $mediaManager->create();
         $media->setBinaryContent($file);
@@ -117,30 +136,4 @@ class MediaAdminController extends BaseMediaAdminController
         ]);
     }
 
-    /**
-     * Sets the admin form theme to form view. Used for compatibility between Symfony versions.
-     *
-     * @param string $theme
-     */
-    private function setFormTheme(FormView $formView, $theme)
-    {
-        $twig = $this->get('twig');
-
-        // BC for Symfony < 3.2 where this runtime does not exists
-        if (!method_exists('Symfony\Bridge\Twig\AppVariable', 'getToken')) {
-            $twig->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')
-                ->renderer->setTheme($formView, $theme);
-
-            return;
-        }
-
-        // BC for Symfony < 3.4 where runtime should be TwigRenderer
-        if (!method_exists('Symfony\Bridge\Twig\Command\DebugCommand', 'getLoaderPaths')) {
-            $twig->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->setTheme($formView, $theme);
-
-            return;
-        }
-
-        $twig->getRuntime('Symfony\Component\Form\FormRenderer')->setTheme($formView, $theme);
-    }
 }

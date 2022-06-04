@@ -2,7 +2,7 @@
 
 If not already done, install and configure [SonataMediaBundle](http://sonata-project.org/bundles/media/master/doc/index.html).
 
-Then, use [Composer](https://getcomposer.org/) to install CoopTilleulsCKEditorSonataMediaBundle and FOSCKEditorBundle:
+Then, use [Composer](https://getcomposer.org/) to install TWorksCKEditorSonataMediaBundlefork and FOSCKEditorBundle:
 
     composer require tilleuls/ckeditor-sonata-media-bundle friendsofsymfony/ckeditor-bundle
 
@@ -15,7 +15,7 @@ public function registerBundles()
 {
     return array(
         // ...
-        new CoopTilleuls\Bundle\CKEditorSonataMediaBundle\CoopTilleulsCKEditorSonataMediaBundle(),
+        new TWorks\Bundle\CKEditorSonataMediaBundlefork\TWorksCKEditorSonataMediaBundlefork(),
         new FOS\CKEditorBundle\FOSCKEditorBundle(),
         // ...
     );
@@ -28,7 +28,7 @@ or
 
 return [
     // ...
-    CoopTilleuls\Bundle\CKEditorSonataMediaBundle\CoopTilleulsCKEditorSonataMediaBundle::class => ['all' => true],
+    TWorks\Bundle\CKEditorSonataMediaBundlefork\TWorksCKEditorSonataMediaBundlefork::class => ['all' => true],
     FOS\CKEditorBundle\FOSCKEditorBundle::class => ['all' => true],
     // ...
 ];
@@ -85,7 +85,7 @@ php app/console sonata:easy-extends:generate --dest=src SonataMediaBundle
 php bin/console sonata:easy-extends:generate --dest=src SonataMediaBundle
 ```
 
-If you want to customize `MediaAdminController` you must extend `CoopTilleuls\Bundle\CKEditorSonataMediaBundle\Controller\MediaAdminController` in your bundle, and set parameter `sonata.media.admin.media.controller` to match your controller.
+If you want to customize `MediaAdminController` you must extend `TWorks\Bundle\CKEditorSonataMediaBundlefork\Controller\MediaAdminController` in your bundle, and set parameter `sonata.media.admin.media.controller` to match your controller.
 
 ## Usage without FOSCKEditorBundle
 

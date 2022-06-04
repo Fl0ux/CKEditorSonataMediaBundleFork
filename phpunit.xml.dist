@@ -12,7 +12,7 @@
          bootstrap="vendor/autoload.php"
 >
     <testsuites>
-        <testsuite name="CKEditorSonataMediaBundle Test Suite">
+        <testsuite name="CKEditorSonataMediaBundlefork Test Suite">
             <directory>./tests/</directory>
         </testsuite>
     </testsuites>

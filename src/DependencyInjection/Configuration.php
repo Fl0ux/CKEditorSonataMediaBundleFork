@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the CKEditorSonataMediaBundle package.
+ * This file is part of the CKEditorSonataMediaBundlefork package.
  *
  * (c) La Coopérative des Tilleuls <contact@les-tilleuls.coop>
  *
@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace CoopTilleuls\Bundle\CKEditorSonataMediaBundle\DependencyInjection;
+namespace TWorks\Bundle\CKEditorSonataMediaBundlefork\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -30,12 +30,9 @@ final class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder('coop_tilleuls_ck_editor_sonata_media');
+        $treeBuilder = new TreeBuilder('tworks_ck_editor_sonata_media');
         if (method_exists($treeBuilder, 'getRootNode')) {
             $rootNode = $treeBuilder->getRootNode();
-        } else {
-            // BC layer for symfony/config 4.1 and older
-            $rootNode = $treeBuilder->root('coop_tilleuls_ck_editor_sonata_media');
         }
 
         $rootNode
@@ -43,9 +40,9 @@ final class Configuration implements ConfigurationInterface
                 ->arrayNode('templates')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode('layout')->defaultValue('@CoopTilleulsCKEditorSonataMedia/layout.html.twig')->end()
-                        ->scalarNode('browser')->defaultValue('@CoopTilleulsCKEditorSonataMedia/MediaAdmin/browser.html.twig')->end()
-                        ->scalarNode('upload')->defaultValue('@CoopTilleulsCKEditorSonataMedia/MediaAdmin/upload.html.twig')->end()
+                        ->scalarNode('layout')->defaultValue('@TWorksCKEditorSonataMedia/layout.html.twig')->end()
+                        ->scalarNode('browser')->defaultValue('@TWorksCKEditorSonataMedia/MediaAdmin/browser.html.twig')->end()
+                        ->scalarNode('upload')->defaultValue('@TWorksCKEditorSonataMedia/MediaAdmin/upload.html.twig')->end()
                     ->end()
             ->end()
         ;

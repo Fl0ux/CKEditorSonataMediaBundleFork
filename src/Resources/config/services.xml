@@ -5,12 +5,12 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="coop_tilleuls_ck_editor_sonata_media.media.extension.class">CoopTilleuls\Bundle\CKEditorSonataMediaBundle\Admin\MediaAdminExtension</parameter>
-        <parameter key="sonata.media.admin.media.controller">CoopTilleuls\Bundle\CKEditorSonataMediaBundle\Controller\MediaAdminController</parameter>
+        <parameter key="t-tworks_ck_editor_sonata_media.media.extension.class">TWorks\Bundle\CKEditorSonataMediaBundlefork\Admin\MediaAdminExtension</parameter>
+        <parameter key="sonata.media.admin.media.controller">TWorks\Bundle\CKEditorSonataMediaBundlefork\Controller\MediaAdminController</parameter>
     </parameters>
 
     <services>
-        <service id="coop_tilleuls_ck_editor_sonata_media.media.extension" class="%coop_tilleuls_ck_editor_sonata_media.media.extension.class%">
+        <service id="tworks_ck_editor_sonata_media.media.extension" class="%tworks_ck_editor_sonata_media.media.extension.class%">
             <tag name="sonata.admin.extension" target="sonata.media.admin.media" />
         </service>
     </services>

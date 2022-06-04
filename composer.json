@@ -10,6 +10,10 @@
             "name": "Kévin Dunglas",
             "email": "kevin@les-tilleuls.coop",
             "homepage": "http://dunglas.fr"
+        },
+        {
+            "name": "Jerzy Kurowski",
+            "email": "jerzykurowski@gmail.com"
         }
     ],
     "require": {
@@ -23,19 +27,21 @@
         "sonata-project/admin-bundle": "^4.12"
     },
     "require-dev": {
-        "symfony/phpunit-bridge": "^3.4.19 || ^4.0"
+        "symfony/phpunit-bridge": "^3.4.19 || ^4.0",
+        "sonata-project/classification-bundle": "^4.0",
+        "phpunit/phpunit": "^9.5"
     },
     "suggest": {
         "egeloen/ckeditor-bundle": "for easy Symfony integration"
     },
     "autoload": {
         "psr-4": {
-            "t-works\\Bundle\\CKEditorSonataMediaBundle\\": "src/"
+            "TWorks\\Bundle\\CKEditorSonataMediaBundlefork\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "CoopTilleuls\\Bundle\\CKEditorSonataMediaBundle\\Tests\\": "tests/"
+            "TWorks\\Bundle\\CKEditorSonataMediaBundlefork\\Tests\\": "tests/"
         }
     },
     "extra": {

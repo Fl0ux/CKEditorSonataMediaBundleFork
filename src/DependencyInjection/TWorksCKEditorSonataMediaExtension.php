@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the CKEditorSonataMediaBundle package.
+ * This file is part of the CKEditorSonataMediaBundlefork package.
  *
  * (c) La Coopérative des Tilleuls <contact@les-tilleuls.coop>
  *
@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace CoopTilleuls\Bundle\CKEditorSonataMediaBundle\DependencyInjection;
+namespace TWorks\Bundle\CKEditorSonataMediaBundlefork\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -25,7 +25,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  *
  * @author Kévin Dunglas <kevin@les-tilleuls.coop>
  */
-final class CoopTilleulsCKEditorSonataMediaExtension extends Extension
+final class TWorksCKEditorSonataMediaExtension extends Extension
 {
     /**
      * {@inheritdoc}
@@ -35,7 +35,7 @@ final class CoopTilleulsCKEditorSonataMediaExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $container->setParameter('coop_tilleuls_ck_editor_sonata_media.configuration.templates', $config['templates']);
+        $container->setParameter('tworks_ck_editor_sonata_media.configuration.templates', $config['templates']);
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.xml');

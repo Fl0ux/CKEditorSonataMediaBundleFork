@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the CKEditorSonataMediaBundle package.
+ * This file is part of the CKEditorSonataMediaBundlefork package.
  *
  * (c) La Coopérative des Tilleuls <contact@les-tilleuls.coop>
  *
@@ -11,9 +11,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace CoopTilleuls\Bundle\CKEditorSonataMediaBundle\Tests\DependencyInjection;
+namespace TWorks\Bundle\CKEditorSonataMediaBundlefork\Tests\DependencyInjection;
 
-use CoopTilleuls\Bundle\CKEditorSonataMediaBundle\DependencyInjection\Configuration;
+use TWorks\Bundle\CKEditorSonataMediaBundlefork\DependencyInjection\Configuration;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\Definition\Processor;
 
@@ -30,8 +30,8 @@ class ConfigurationTest extends TestCase
         $this->assertArrayHasKey('browser', $config['templates']);
         $this->assertArrayHasKey('upload', $config['templates']);
 
-        $this->assertEquals('@CoopTilleulsCKEditorSonataMedia/layout.html.twig', $config['templates']['layout']);
-        $this->assertEquals('@CoopTilleulsCKEditorSonataMedia/MediaAdmin/browser.html.twig', $config['templates']['browser']);
-        $this->assertEquals('@CoopTilleulsCKEditorSonataMedia/MediaAdmin/upload.html.twig', $config['templates']['upload']);
+        $this->assertEquals('@TWorksCKEditorSonataMedia/layout.html.twig', $config['templates']['layout']);
+        $this->assertEquals('@TWorksCKEditorSonataMedia/MediaAdmin/browser.html.twig', $config['templates']['browser']);
+        $this->assertEquals('@TWorksCKEditorSonataMedia/MediaAdmin/upload.html.twig', $config['templates']['upload']);
     }
 }

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the CKEditorSonataMediaBundle package.
+ * This file is part of the CKEditorSonataMediaBundlefork package.
  *
  * (c) La Coopérative des Tilleuls <contact@les-tilleuls.coop>
  *
@@ -11,13 +11,13 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace CoopTilleuls\Bundle\CKEditorSonataMediaBundle;
+namespace TWorks\Bundle\CKEditorSonataMediaBundlefork;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
  * @author Kévin Dunglas <kevin@les-tilleuls.coop>
  */
-final class CoopTilleulsCKEditorSonataMediaBundle extends Bundle
+final class TWorksCKEditorSonataMediaBundlefork extends Bundle
 {
 }
