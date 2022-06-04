@@ -14,13 +14,13 @@
     ],
     "require": {
         "php": "^7.2 || ^8",
-        "symfony/dependency-injection": "^3.4 || ^4.0",
-        "symfony/http-foundation": "^3.4 || ^4.0",
-        "symfony/http-kernel": "^3.4 || ^4.0",
-        "symfony/security-core": "^3.4 || ^4.0",
-        "symfony/config": "^3.4 || ^4.0",
-        "sonata-project/media-bundle": "^3.0",
-        "sonata-project/admin-bundle": "^3.40"
+        "symfony/dependency-injection": "^6.1",
+        "symfony/http-foundation": "^6.1",
+        "symfony/http-kernel": "^6.1",
+        "symfony/security-core": "^6.1",
+        "symfony/config": "^6.1",
+        "sonata-project/media-bundle": "^4.1.5",
+        "sonata-project/admin-bundle": "^4.12"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "^3.4.19 || ^4.0"
@@ -30,7 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "CoopTilleuls\\Bundle\\CKEditorSonataMediaBundle\\": "src/"
+            "t-works\\Bundle\\CKEditorSonataMediaBundle\\": "src/"
         }
     },
     "autoload-dev": {
